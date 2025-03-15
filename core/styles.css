@@ -56,8 +56,11 @@ section p {
 }
 
 .skill {
+    display: grid;
     width: 85px;
+    grid-template-rows: 70% 30%;
     text-align: center;
+    align-content: center;
 }
 
 .skill img {
