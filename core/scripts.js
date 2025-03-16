@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', img: 'core/images/hard/html.svg' },
         { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', img: 'core/images/hard/css.svg' },
         { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', img: 'core/images/hard/js.svg' },
+        { name: 'Ubuntu', url: 'https://ubuntu.com/', img: 'core/images/hard/ubuntu.svg' },
     ];
 
     const softSkills = [
