@@ -19,8 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const softSkills = [
-        // { name: 'Коммуникация', url: '#', img: 'core/images/soft/communication.svg' },
-        // { name: 'Работа в команде', url: '#', img: 'core/images/soft/teamwork.svg' }
+        { name: 'Самоорганизованность', url: '#', img: 'core/images/soft/self-organization.svg' },
+        { name: 'Обучаемость', url: '#', img: 'core/images/soft/learning.svg' },
+        { name: 'Критическое мышление', url: '#', img: 'core/images/soft/critical-thinking.svg' },
+        { name: 'Внимательность к&nbsp;деталям', url: '#', img: 'core/images/soft/attention-to-detail.svg' },
+        { name: 'Целеустремленность', url: '#', img: 'core/images/soft/purposefulness.svg' },
+        { name: 'Пунктуальность', url: '#', img: 'core/images/soft/punctuality.svg' },
     ];
 
     const hardSkillsContainer = document.getElementById('hard-skills-container');

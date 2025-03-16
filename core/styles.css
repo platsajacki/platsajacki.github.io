@@ -1,3 +1,4 @@
+/* Общие стили */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,82 +6,123 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background: #e9ecef;
+    color: #343a40;
     padding: 20px;
 }
 
 .container {
     max-width: 960px;
     margin: 0 auto;
-    background: #fff;
-    padding: 20px 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 header {
     text-align: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.6rem;
     margin-bottom: 10px;
 }
 
 section {
-    margin-top: 30px;
+    margin-bottom: 35px;
 }
 
 section h2 {
-    font-size: 1.7em;
-    margin-bottom: 10px;
-    border-left: 4px solid #007acc;
-    padding-left: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 5px solid #007bff;
 }
 
-section p {
-    margin-bottom: 15px;
-    font-size: 1.1em;
+.skills {
+    display: grid;
+    gap: 35px;
 }
 
 .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 25px;
 }
 
 .skill {
-    display: grid;
-    width: 85px;
-    grid-template-rows: 70% 30%;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
     text-align: center;
-    align-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .skill img {
-    width: 100%;
-    height: auto;
-    display: block;
+    max-width: 70px;
+    max-height: 70px;
     margin-bottom: 10px;
 }
 
 .skill span {
-    font-size: 1em;
     display: block;
+    font-size: 1rem;
+    color: #495057;
+    margin-top: 5px;
+    word-break: break-word;
+}
+
+#hard-skills-container .skill {
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+}
+
+#hard-skills-container .skill span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 123, 255, 0.8);
+    color: #ffffff;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+#hard-skills-container .skill:hover span {
+    opacity: 1;
+}
+
+#soft-skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+#soft-skills-container .skill {
+    width: 270px;
+}
+
+#soft-skills-container .skill span {
+    position: static;
+    background: none;
+    color: #343a40;
+    font-size: 0.9rem;
 }
 
 footer {
     text-align: center;
     padding: 20px 0;
-    border-top: 1px solid #ddd;
-    margin-top: 30px;
-    font-size: 0.9em;
+    border-top: 1px solid #dee2e6;
+    margin-top: 40px;
+    font-size: 0.95rem;
 }
 
 @media (max-width: 600px) {
@@ -88,9 +130,9 @@ footer {
         padding: 20px;
     }
     header h1 {
-        font-size: 2em;
+        font-size: 2.2rem;
     }
     section h2 {
-        font-size: 1.5em;
+        font-size: 1.6rem;
     }
 }
