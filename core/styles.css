@@ -1,4 +1,8 @@
-/* Общие стили */
+:root {
+    --primary-color: #278dfa;
+    --background-item: #f8f9fa
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,12 +27,23 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-header h1 {
-    font-size: 2.6rem;
-    margin-bottom: 10px;
+header h1.name {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+header h1.profession {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #495057;
+    font-style: italic;
 }
 
 section {
@@ -36,10 +51,51 @@ section {
 }
 
 section h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 20px;
     padding-left: 15px;
-    border-left: 5px solid #007bff;
+    border-left: 5px solid var(--primary-color);
+}
+
+.contact-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: max-content max-content 1fr;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 10px;
+    background: var(--background-item);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: fit-content;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-item img {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-item a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #343a40;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--primary-color);
 }
 
 .skills {
@@ -54,7 +110,7 @@ section h2 {
 }
 
 .skill {
-    background: #f8f9fa;
+    background: var(--background-item);
     border-radius: 10px;
     padding: 15px;
     text-align: center;
@@ -91,7 +147,7 @@ section h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 123, 255, 0.8);
+    background: var(--primary-color);
     color: #ffffff;
     padding: 4px;
     opacity: 0;

@@ -9,12 +9,24 @@
 </head>
   <body>
     <div class="container">
+
       <header>
-        <h1>Vyacheslav Menyukhov</h1>
+        <h1 class="name">Vyacheslav Menyukhov</h1>
+        <h1 class="profession">Python Developer</h1>
+        <div class="contact-container">
+          <div class="contact-item">
+            <img src="core/images/icons/email.svg" alt="Email">
+            <a href="mailto:platsajacki@gmail.com">platsajacki@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <img src="core/images/icons/telegram.svg" alt="Telegram">
+            <a href="https://t.me/menyukhov" target="_blank">@menyukhov</a>
+          </div>
+        </div>
       </header>
 
       <section id="about">
-        <h2>О себе</h2>
+        <h2>About Me</h2>
         <p>
           ...
         </p>
@@ -23,7 +35,6 @@
         </p>
       </section>
 
-      <!-- Раздел "Навыки" -->
       <section class="skills" id="skills">
         <div>
           <h2>Hard Skills</h2>
@@ -34,8 +45,10 @@
           <div class="skills-container" id="soft-skills-container"></div>
         </div>
       </section>
+
       <footer>
-        <p>Vyacheslav Menyukhov &copy; 2025</p>
+        <p>Vyacheslav Menyukhov &copy; <span id="footer-year"></span></p></p>
+        <script>document.getElementById("footer-year").textContent = new Date().getFullYear()</script>
       </footer>
     </div>
   </body>
