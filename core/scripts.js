@@ -1,52 +1,89 @@
+class Skill {
+  constructor({ name, url, img }) {
+    this.name = name;
+    this.url = url;
+    this.img = img;
+  }
+
+  get html() {
+    return `
+      <div class="skill">
+        <a href="${this.url}" target="_blank">
+          <img src="${this.img}" alt="${this.name} Logo">
+        </a>
+        <span>${this.name}</span>
+      </div>
+    `;
+  }
+}
+
+class Project {
+  constructor({ title, summary, details, stack, dates }) {
+    this.title = title;
+    this.summary = summary;
+    this.details = details;
+    this.stack = stack;
+    this.dates = dates;
+  }
+
+  get html() {
+    return `
+      <div class="project">
+        <h3>${this.title}</h3>
+        <p class="summary">${this.summary}</p>
+        <p class="toggle-btn">Подробнее об этом проект</p>
+        <div class="project-details">
+          <p class="description">${this.details}</p>
+          <p class="stack"><strong>Стек:</strong> ${this.stack}</p>
+          <p class="dates">${this.dates}</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function appendSkills(skills, container) {
+  skills.forEach(skillData => {
+    const skill = new Skill(skillData);
+    container.insertAdjacentHTML('beforeend', skill.html);
+  });
+}
+
+function appendProjects(projects, container) {
+  projects.forEach(projectData => {
+    const project = new Project(projectData);
+    container.insertAdjacentHTML('beforeend', project.html);
+    const projectDiv = container.lastElementChild;
+    const toggleBtn = projectDiv.querySelector('.toggle-btn');
+    toggleBtn.addEventListener('click', () => {
+      projectDiv.classList.toggle('open');
+      toggleBtn.textContent = projectDiv.classList.contains('open')
+        ? 'Свернуть'
+        : 'Подробнее об этом проекте';
+    });
+  });
+}
+
+function fetchAndRenderSkills() {
+  fetch('core/data/skills.json')
+    .then(response => response.json())
+    .then(data => {
+      appendSkills(data.hardSkills, document.getElementById('hard-skills-container'));
+      appendSkills(data.softSkills, document.getElementById('soft-skills-container'));
+    })
+    .catch(error => console.error('Ошибка загрузки данных скиллов:', error));
+}
+
+function fetchAndRenderProjects() {
+  fetch('core/data/experience.json')
+    .then(response => response.json())
+    .then(data => {
+      appendProjects(data.projects, document.getElementById('experience-container'));
+    })
+    .catch(error => console.error('Ошибка загрузки данных опыта:', error));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    const hardSkills = [
-        { name: 'Python', url: 'https://www.python.org/', img: 'core/images/hard/py.svg' },
-        { name: 'MyPy', url: 'https://mypy.readthedocs.io/en/stable/', img: 'core/images/hard/mypy.svg' },
-        { name: 'Pytest', url: 'https://docs.pytest.org/en/stable/', img: 'core/images/hard/pytest.svg' },
-        { name: 'Django', url: 'https://www.djangoproject.com/', img: 'core/images/hard/django.svg' },
-        { name: 'DRF', url: 'https://www.django-rest-framework.org/', img: 'core/images/hard/drf.svg' },
-        { name: 'Celery', url: 'https://docs.celeryq.dev/en/stable/index.html', img: 'core/images/hard/celery.svg' },
-        { name: 'Aiogram', url: 'https://aiogram.dev/', img: 'core/images/hard/aiogram.svg' },
-        { name: 'SQLAlchemy', url: 'https://www.sqlalchemy.org/', img: 'core/images/hard/sqlalchemy.svg' },
-        { name: 'PostgresSQL', url: 'https://www.postgresql.org/', img: 'core/images/hard/psql.svg' },
-        { name: 'Docker', url: 'https://www.docker.com/', img: 'core/images/hard/docker.svg' },
-        { name: 'Redis', url: 'https://redis.io/', img: 'core/images/hard/redis.svg' },
-        { name: 'nginx', url: 'https://nginx.org/', img: 'core/images/hard/nginx.svg' },
-        { name: 'GitHub Actions', url: 'https://github.com/features/actions', img: 'core/images/hard/gh_actions.svg' },
-        { name: 'HTML', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', img: 'core/images/hard/html.svg' },
-        { name: 'CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', img: 'core/images/hard/css.svg' },
-        { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', img: 'core/images/hard/js.svg' },
-        { name: 'Ubuntu', url: 'https://ubuntu.com/', img: 'core/images/hard/ubuntu.svg' },
-    ];
-
-    const softSkills = [
-        { name: 'Самоорганизованность', url: '#', img: 'core/images/soft/self-organization.svg' },
-        { name: 'Обучаемость', url: '#', img: 'core/images/soft/learning.svg' },
-        { name: 'Критическое мышление', url: '#', img: 'core/images/soft/critical-thinking.svg' },
-        { name: 'Внимательность к&nbsp;деталям', url: '#', img: 'core/images/soft/attention-to-detail.svg' },
-        { name: 'Целеустремленность', url: '#', img: 'core/images/soft/purposefulness.svg' },
-        { name: 'Пунктуальность', url: '#', img: 'core/images/soft/punctuality.svg' },
-    ];
-
-    const hardSkillsContainer = document.getElementById('hard-skills-container');
-    const softSkillsContainer = document.getElementById('soft-skills-container');
-
-    function createSkillElement({ name, url, img }) {
-        const skillDiv = document.createElement('div');
-        skillDiv.classList.add('skill');
-        skillDiv.innerHTML = `
-            <a href='${url}'>
-                <img src='${img}' alt='${name} Logo'>
-            </a>
-            <span>${name}</span>
-        `;
-        return skillDiv;
-    }
-
-    function renderSkills(skills, container) {
-        skills.forEach(skill => container.appendChild(createSkillElement(skill)));
-    }
-
-    renderSkills(hardSkills, hardSkillsContainer);
-    renderSkills(softSkills, softSkillsContainer);
+  fetchAndRenderSkills();
+  fetchAndRenderProjects();
 });
