@@ -18,18 +18,20 @@ class Skill {
 }
 
 class Project {
-  constructor({ title, summary, details, stack, dates }) {
+  constructor({ title, summary, details, stack, dates, link }) {
     this.title = title;
     this.summary = summary;
     this.details = details;
     this.stack = stack;
     this.dates = dates;
+    this.link = link;
   }
 
   get html() {
     return `
       <div class="project">
         <h3>${this.title}</h3>
+        ${this.link ? `<p><a class="link" href="${this.link}" target="_blank">${this.link}</a></p>` : ''}
         <p class="summary">${this.summary}</p>
         <p class="toggle-btn">Подробнее об этом проект</p>
         <div class="project-details">

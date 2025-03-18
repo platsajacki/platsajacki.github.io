@@ -2,7 +2,8 @@
     "projects": [
         {
             "title": "GameDi",
-            "summary": "Запустил магазин детективных игр «Game Di».",
+            "link": "https://gamedi.ru/",
+            "summary": "Создал и запустил магазин детективных игр «Game Di».",
             "details": "Спроектировал базу данных, реализовал backend и frontend (django-template, CSS, JS), разработал тесты и настроил систему маркетинговых рассылок. Проект уже привлёк более 1000 пользователей.",
             "stack": "Django, HTML, CSS, JavaScript, PostgreSQL, Docker, pytest, flake8, mypy, isort, nginx, GitHub Actions",
             "dates": "Сентябрь 2024 — настоящее время"
